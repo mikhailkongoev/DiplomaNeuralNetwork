@@ -13,7 +13,13 @@ public class SoftPlus extends Neuron {
         super(inputs);
     }
 
+    @Override
     public double evaluateActivation() {
         return Math.log(1 + Math.exp(evaluateSum()));
+    }
+
+    @Override
+    public double activationDerivative(int num) {
+        return 0;
     }
 }

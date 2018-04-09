@@ -13,11 +13,17 @@ public class Perceptron extends Neuron {
         super(inputs);
     }
 
+    @Override
     public double evaluateActivation() {
         if (evaluateSum() >= 0) {
             return 1;
         } else {
             return -1;
         }
+    }
+
+    @Override
+    public double activationDerivative(int num) {
+        return 0;
     }
 }

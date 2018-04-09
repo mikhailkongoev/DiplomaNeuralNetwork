@@ -13,10 +13,16 @@ public class ReLU extends Neuron {
         super(inputs);
     }
 
+    @Override
     public double evaluateActivation() {
         if (evaluateSum() >= 0) {
             return evaluateSum();
         }
+        return 0;
+    }
+
+    @Override
+    public double activationDerivative(int num) {
         return 0;
     }
 }

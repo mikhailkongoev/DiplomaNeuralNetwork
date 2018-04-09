@@ -13,7 +13,13 @@ public class LinearNeuron extends Neuron {
         super(inputs);
     }
 
+    @Override
     public double evaluateActivation() {
         return evaluateSum();
+    }
+
+    @Override
+    public double activationDerivative(int num) {
+        return getInputs().get(0, num);
     }
 }

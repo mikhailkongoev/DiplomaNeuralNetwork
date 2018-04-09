@@ -5,14 +5,13 @@ import org.ejml.simple.SimpleMatrix;
 import java.util.Random;
 
 public abstract class Neuron {
-    SimpleMatrix inputs;
-    SimpleMatrix weights;
-    double realResult;
+    private SimpleMatrix inputs;
+    private SimpleMatrix weights;
 
     public Neuron(double[] inputs) {
         Random r = new Random();
         double[][] inputsForSM = new double[1][inputs.length];
-        System.arraycopy(inputs, 0, inputsForSM[0], 0, inputs.length);
+        inputsForSM[0] = inputs;
         setInputs(new SimpleMatrix(inputsForSM));
         double[][] weights = new double[inputs.length][1];
         for (int i = 0; i < inputs.length; i++) {
@@ -51,20 +50,18 @@ public abstract class Neuron {
         this.inputs = inputs;
     }
 
+    public void setInputs(double[] inputs) {
+        double[][] temp = new double[1][inputs.length];
+        temp[0] = inputs;
+        setInputs(new SimpleMatrix(temp));
+    }
+
     public SimpleMatrix getWeights() {
         return weights;
     }
 
     public void setWeights(SimpleMatrix weights) {
         this.weights = weights;
-    }
-
-    public double getRealResult() {
-        return realResult;
-    }
-
-    public void setRealResult(double realResult) {
-        this.realResult = realResult;
     }
 
     public void printInputs() {
@@ -76,4 +73,6 @@ public abstract class Neuron {
     }
 
     public abstract double evaluateActivation();
+
+    public abstract double activationDerivative(int num);
 }
