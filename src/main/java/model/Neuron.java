@@ -9,22 +9,21 @@ public abstract class Neuron {
     private SimpleMatrix weights;
 
     public Neuron(double[] inputs) {
-        Random r = new Random();
+        this(inputs.length);
         double[][] inputsForSM = new double[1][inputs.length];
         inputsForSM[0] = inputs;
         setInputs(new SimpleMatrix(inputsForSM));
-        double[][] weights = new double[inputs.length][1];
-        for (int i = 0; i < inputs.length; i++) {
-            weights[i][0] = (r.nextDouble() - 0.5) * 0.01;
-        }
-        setWeights(new SimpleMatrix(weights));
     }
 
     public Neuron(SimpleMatrix inputs) {
+        this(inputs.numCols());
         setInputs(inputs);
+    }
+
+    public Neuron(int weightsSize) {
         Random r = new Random();
-        double[][] weights = new double[inputs.numCols()][1];
-        for (int i = 0; i < inputs.numCols(); i++) {
+        double[][] weights = new double[weightsSize][1];
+        for (int i = 0; i < weightsSize; i++) {
             weights[i][0] = (r.nextDouble() - 0.5) * 0.01;
         }
         setWeights(new SimpleMatrix(weights));

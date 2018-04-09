@@ -13,6 +13,8 @@ public class HyperbolicTangentNeuron extends Neuron {
         super(inputs);
     }
 
+    public HyperbolicTangentNeuron(int weightsSize) { super(weightsSize); }
+
     @Override
     public double evaluateActivation() {
         return Math.tanh(evaluateSum());

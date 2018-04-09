@@ -22,15 +22,19 @@ public class Network {
     }
 
     public void setInputs(double[] inputs) {
-        //TODO: add implementation network.setInputs(double[] inputs)
+        double[][] inputsArray = new double[1][inputs.length];
+        inputsArray[0] = inputs;
+        this.inputs = new SimpleMatrix(inputsArray);
     }
 
     public void setInputs(SimpleMatrix inputs) {
-        //TODO: add implementation network.setInputs(double[] inputs)
+        this.inputs = inputs;
     }
 
-    public double evaluate() {
-        //TODO: add implementation network.evaluate(double[] signal)
-        return 0;
+    public SimpleMatrix evaluate() {
+        for (Layer layer: layers) {
+            inputs = layer.evaluate(inputs);
+        }
+        return inputs;
     }
 }

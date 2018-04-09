@@ -15,6 +15,8 @@ public class SigmoidNeuron extends Neuron {
         super(inputs);
     }
 
+    public SigmoidNeuron(int weightsSize) { super(weightsSize); }
+
     @Override
     public double evaluateActivation() {
         return sigmoid.value(evaluateSum());
@@ -22,6 +24,6 @@ public class SigmoidNeuron extends Neuron {
 
     @Override
     public double activationDerivative(int num) {
-        return 0;
+        return evaluateActivation() * (1 - evaluateActivation()) * getInputs().get(0, num);
     }
 }

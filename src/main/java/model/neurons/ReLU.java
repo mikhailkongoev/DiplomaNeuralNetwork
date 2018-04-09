@@ -13,6 +13,9 @@ public class ReLU extends Neuron {
         super(inputs);
     }
 
+    public ReLU(int weightsSize) { super(weightsSize); }
+
+
     @Override
     public double evaluateActivation() {
         if (evaluateSum() >= 0) {

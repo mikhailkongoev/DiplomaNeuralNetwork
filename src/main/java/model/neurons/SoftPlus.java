@@ -13,6 +13,8 @@ public class SoftPlus extends Neuron {
         super(inputs);
     }
 
+    public SoftPlus(int weightsSize) { super(weightsSize); }
+
     @Override
     public double evaluateActivation() {
         return Math.log(1 + Math.exp(evaluateSum()));

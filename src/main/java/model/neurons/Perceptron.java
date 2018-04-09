@@ -13,6 +13,8 @@ public class Perceptron extends Neuron {
         super(inputs);
     }
 
+    public Perceptron(int weightsSize) { super(weightsSize); }
+
     @Override
     public double evaluateActivation() {
         if (evaluateSum() >= 0) {

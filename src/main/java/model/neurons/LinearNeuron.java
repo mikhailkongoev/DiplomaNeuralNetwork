@@ -13,6 +13,8 @@ public class LinearNeuron extends Neuron {
         super(inputs);
     }
 
+    public LinearNeuron(int weightsSize) { super(weightsSize); }
+
     @Override
     public double evaluateActivation() {
         return evaluateSum();
